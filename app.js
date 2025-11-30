@@ -21,10 +21,27 @@ document.addEventListener('DOMContentLoaded', () => {
 // Estrutura para a integração com o Firestore (requer a biblioteca Firebase no HTML)
 // NOTA: Para um aplicativo real, as configurações e a segurança devem ser tratadas em um ambiente de back-end (Cloud Functions, por exemplo).
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    // ... outros dados
+    // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBOrfcwLzIMUjuLjCq4dCWpts7UXigp5fs",
+  authDomain: "relatorio-supervisor-72ef1.firebaseapp.com",
+  projectId: "relatorio-supervisor-72ef1",
+  storageBucket: "relatorio-supervisor-72ef1.firebasestorage.app",
+  messagingSenderId: "288935240510",
+  appId: "1:288935240510:web:0ee6cc2c83b02dc07bc26f",
+  measurementId: "G-P6CG8TJR2M"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 };
 
 // ** Importante **: Adicionar o script da biblioteca do Firebase ao HTML antes de usar (ex: <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>)
@@ -75,4 +92,5 @@ function gerarRelatorio(event) {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+
 }
