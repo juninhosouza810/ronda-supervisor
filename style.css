@@ -1,0 +1,35 @@
+/* Estilo básico para melhorar a visualização mobile e a identidade visual */
+body {
+    background-color: #f8f9fa; /* Cinza claro */
+    font-family: Arial, sans-serif;
+}
+
+/* Cores da PMESP: Azul-Marinho e detalhes em Vermelho/Dourado (usamos primary/danger do Bootstrap) */
+.bg-primary {
+    background-color: #003366 !important; /* Azul Marinho PMESP */
+}
+
+.text-primary {
+    color: #003366 !important;
+}
+
+.btn-danger {
+    background-color: #8b0000; /* Vermelho Escuro PMESP */
+    border-color: #8b0000;
+}
+
+/* Melhorar a visualização das legendas em campo móvel */
+fieldset {
+    border: 1px solid #ccc !important;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+legend {
+    width: auto;
+    padding: 0 10px;
+    font-size: 1.1rem;
+    color: #333;
+    background-color: #fff;
+    border-bottom: none;
+}

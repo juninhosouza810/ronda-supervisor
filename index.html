@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMESP - Relatório de Ronda</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container py-3">
+        
+        <header class="d-flex justify-content-center align-items-center mb-4 p-3 bg-primary text-white rounded shadow-sm">
+            <a href="URL_DO_SEU_REPOSITORIO_GITHUB" target="_blank" class="text-white text-decoration-none">
+                <i class="bi bi-github" style="font-size: 2rem;"></i>
+                <span class="ms-2 h4 mb-0">PMESP Report App</span>
+            </a>
+        </header>
+
+        <h2 class="text-center mb-4 text-primary">Relatório de Ronda - CPI-10</h2>
+
+        <form id="relatorioForm">
+
+            <fieldset class="border p-3 mb-4 rounded shadow-sm">
+                <legend class="float-none w-auto px-2 fs-5">Cabeçalho</legend>
+                <div class="row g-3">
+                    <div class="col-6">
+                        <label for="data" class="form-label">Data</label>
+                        <input type="date" class="form-control" id="data" required>
+                    </div>
+                    <div class="col-6">
+                        <label for="turno_inicio" class="form-label">Turno (Início)</label>
+                        <input type="time" class="form-control" id="turno_inicio" required>
+                    </div>
+                    <div class="col-6">
+                        <label for="turno_fim" class="form-label">Turno (Fim)</label>
+                        <input type="time" class="form-control" id="turno_fim" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="border p-3 mb-4 rounded shadow-sm">
+                <legend class="float-none w-auto px-2 fs-5">Dados da Viatura/Oficial</legend>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label fw-bold">Oficial Supervisor</label>
+                    </div>
+                    <div class="col-6">
+                        <label for="posto_graduacao" class="form-label">Posto/Graduação</label>
+                        <input type="text" class="form-control" id="posto_graduacao">
+                    </div>
+                    <div class="col-6">
+                        <label for="re_dc" class="form-label">RE / DC</label>
+                        <input type="text" class="form-control" id="re_dc">
+                    </div>
+                    <div class="col-12">
+                        <label for="nome_guerra" class="form-label">Nome de Guerra</label>
+                        <input type="text" class="form-control" id="nome_guerra">
+                    </div>
+                    <hr class="my-3">
+                    <div class="col-12">
+                        <label class="form-label fw-bold">Viatura</label>
+                    </div>
+                    <div class="col-6">
+                        <label for="km_final" class="form-label">Km Final</label>
+                        <input type="number" class="form-control" id="km_final">
+                    </div>
+                    <div class="col-6">
+                        <label for="km_inicio" class="form-label">Km Início</label>
+                        <input type="number" class="form-control" id="km_inicio">
+                    </div>
+                    <div class="col-12">
+                        <label for="km_percorrido" class="form-label">Km Percorrido</label>
+                        <input type="number" class="form-control" id="km_percorrido" readonly placeholder="Calculado Automaticamente">
+                    </div>
+                    <hr class="my-3">
+                    <div class="col-4">
+                        <label for="enc" class="form-label">Enc</label>
+                        <input type="text" class="form-control" id="enc">
+                    </div>
+                    <div class="col-4">
+                        <label for="mot" class="form-label">Mot</label>
+                        <input type="text" class="form-control" id="mot">
+                    </div>
+                    <div class="col-4">
+                        <label for="aux" class="form-label">Aux</label>
+                        <input type="text" class="form-control" id="aux">
+                    </div>
+                </div>
+            </fieldset>
+
+            <div id="opm_rondada_container">
+                <fieldset class="border p-3 mb-4 rounded shadow-sm opm-rondada" data-opm="1">
+                    <legend class="float-none w-auto px-2 fs-5 text-success">OPM RONDADA - 1</legend>
+                    
+                    <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label for="opm1_btl_cia" class="form-label">Btl/ Cia PM / Pel / Gp</label>
+                            <input type="text" class="form-control" id="opm1_btl_cia">
+                        </div>
+                        <div class="col-6">
+                            <label for="opm1_municipio" class="form-label">Município</label>
+                            <input type="text" class="form-control" id="opm1_municipio">
+                        </div>
+                        <div class="col-6">
+                            <label for="opm1_chegada" class="form-label">Hora de chegada</label>
+                            <input type="time" class="form-control" id="opm1_chegada">
+                        </div>
+                        <div class="col-6">
+                            <label for="opm1_saida" class="form-label">Hora de saída</label>
+                            <input type="time" class="form-control" id="opm1_saida">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="opm1_policiais" class="form-label">1. [cite_start]Policiais de Serviço na base (Posto/Graduação / RE / Nome de guerra) [cite: 3]</label>
+                        <textarea class="form-control" id="opm1_policiais" rows="2"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="opm1_apresentacao" class="form-label">1.1. [cite_start]Apresentação pessoal e EPI (Colete/Armamento) [cite: 3]</label>
+                        <textarea class="form-control" id="opm1_apresentacao" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="opm1_area_externa" class="form-label">2. [cite_start]Área externa da OPM (Pintura, tóten, iluminação, poda, etc.) [cite: 3]</label>
+                        <textarea class="form-control" id="opm1_area_externa" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="opm1_servico_dia" class="form-label">3. [cite_start]Serviço de Dia e áreas comuns internas (Limpeza, iluminação, materiais abandonados, etc.) [cite: 3]</label>
+                        <textarea class="form-control" id="opm1_servico_dia" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="opm1_reserva_armas" class="form-label">4. [cite_start]Reserva de armas (Local, cofre, livro de controle) [cite: 3]</label>
+                        <textarea class="form-control" id="opm1_reserva_armas" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="opm1_vestiarios" class="form-label">5. [cite_start]Vestiários (Conservação, limpeza, armários, vazamentos) [cite: 3]</label>
+                        <textarea class="form-control" id="opm1_vestiarios" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="opm1_copa_cozinha" class="form-label">6. [cite_start]Copa/cozinha (Conservação, limpeza, eletrodomésticos, vazamentos) [cite: 3]</label>
+                        <textarea class="form-control" id="opm1_copa_cozinha" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="opm1_garagens" class="form-label">7. [cite_start]Garagens (Limpeza da área/vtrs, iluminação, materiais) [cite: 3]</label>
+                        <textarea class="form-control" id="opm1_garagens" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="opm1_area_lazer" class="form-label">8. [cite_start]Área de lazer (Tipo, conservação, elétricos/hidráulicos, materiais) [cite: 3]</label>
+                        <textarea class="form-control" id="opm1_area_lazer" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="opm1_outros" class="form-label">9. [cite_start]Outros itens julgados oportunos ("Observações") [cite: 3]</label>
+                        <textarea class="form-control" id="opm1_outros" rows="2"></textarea>
+                    </div>
+                </fieldset>
+                
+                <fieldset class="border p-3 mb-4 rounded shadow-sm opm-rondada" data-opm="2">
+                    <legend class="float-none w-auto px-2 fs-5 text-success">OPM RONDADA - 2</legend>
+                    <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label for="opm2_btl_cia" class="form-label">Btl/ Cia PM / Pel / Gp</label>
+                            <input type="text" class="form-control" id="opm2_btl_cia">
+                        </div>
+                        <div class="col-6">
+                            <label for="opm2_municipio" class="form-label">Município</label>
+                            <input type="text" class="form-control" id="opm2_municipio">
+                        </div>
+                        <div class="col-6">
+                            <label for="opm2_chegada" class="form-label">Hora de chegada</label>
+                            <input type="time" class="form-control" id="opm2_chegada">
+                        </div>
+                        <div class="col-6">
+                            <label for="opm2_saida" class="form-label">Hora de saída</label>
+                            <input type="time" class="form-control" id="opm2_saida">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-muted">... Campos de 1 a 9 (idênticos à OPM 1) ...</label>
+                        <div class="d-grid"><button type="button" class="btn btn-outline-secondary btn-sm" onclick="alert('Estes campos seriam preenchidos de forma idêntica à OPM 1 no layout final.');">Mostrar/Preencher Campos OPM 2</button></div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div id="ronda_policiamento_container">
+                <fieldset class="border p-3 mb-4 rounded shadow-sm ronda-prog" data-ronda="1">
+                    <legend class="float-none w-auto px-2 fs-5 text-warning">Ronda a Programa de Policiamento - 1</legend>
+                    <div class="row g-3 mb-3">
+                        <div class="col-6"><label for="ronda1_horario" class="form-label">Horário</label><input type="time" class="form-control" id="ronda1_horario"></div>
+                        <div class="col-6"><label for="ronda1_viatura" class="form-label">Viatura</label><input type="text" class="form-control" id="ronda1_viatura"></div>
+                        <div class="col-6"><label for="ronda1_km" class="form-label">Km</label><input type="number" class="form-control" id="ronda1_km"></div>
+                        <div class="col-6"><label for="ronda1_local" class="form-label">Local</label><input type="text" class="form-control" id="ronda1_local"></div>
+                    </div>
+                    
+                    <h6 class="mt-3">Guarnição</h6>
+                    <div class="row g-3 mb-3">
+                        <div class="col-6"><label for="ronda1_enc_re" class="form-label">Enc RE</label><input type="text" class="form-control" id="ronda1_enc_re"></div>
+                        <div class="col-6"><label for="ronda1_enc_qra" class="form-label">Enc QRA</label><input type="text" class="form-control" id="ronda1_enc_qra"></div>
+                        <div class="col-6"><label for="ronda1_enc_arma" class="form-label">Enc Nº arma portátil</label><input type="text" class="form-control" id="ronda1_enc_arma"></div>
+                        <div class="col-6"><label for="ronda1_mot_re" class="form-label">Mot RE</label><input type="text" class="form-control" id="ronda1_mot_re"></div>
+                        <div class="col-6"><label for="ronda1_mot_qra" class="form-label">Mot QRA</label><input type="text" class="form-control" id="ronda1_mot_qra"></div>
+                        <div class="col-6"><label for="ronda1_mot_arma" class="form-label">Mot Nº arma portátil</label><input type="text" class="form-control" id="ronda1_mot_arma"></div>
+                    </div>
+
+                    <h6 class="mt-3">Verificações</h6>
+                    <div class="mb-3 row">
+                        <div class="col-6">1. CPP está na vtr?</div>
+                        <div class="col-6">1.1. Está atualizado?</div>
+                        <div class="col-6">2. Vtr está no local conforme CPP?</div>
+                        <div class="col-6">5. O giroflex estava acionado?</div>
+                        <div class="col-6">3. Tablet (TMD) logado?</div>
+                        <div class="col-6">6. RSO com produtividade anotada?</div>
+                        <div class="col-6">4. CPP, RSO e TMD estão em conformidade?</div>
+                        <div class="col-6">7. Houve treinamento no prazo de 15 dias?</div>
+                        <div class="col-6">8. Sabe elaborar BO PM Eletrônico ?</div>
+                        <div class="col-12 mt-2">
+                             <label for="ronda1_bo_pm" class="form-label">BO PM Eletrônico?</label>
+                             <select class="form-select" id="ronda1_bo_pm">
+                                <option value="">Selecione</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        [cite_start]<label for="ronda1_obs" class="form-label">Observações complementares [cite: 5]</label>
+                        <textarea class="form-control" id="ronda1_obs" rows="2"></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset class="border p-3 mb-4 rounded shadow-sm ronda-prog" data-ronda="2">
+                    <legend class="float-none w-auto px-2 fs-5 text-warning">Ronda a Programa de Policiamento - 2</legend>
+                    <div class="mb-3">
+                        <label class="form-label text-muted">... Campos de Horário, Guarnição e Verificações (idênticos à Ronda 1) ...</label>
+                        <div class="d-grid"><button type="button" class="btn btn-outline-secondary btn-sm" onclick="alert('Estes campos seriam preenchidos de forma idêntica à Ronda 1 no layout final.');">Mostrar/Preencher Campos Ronda 2</button></div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <fieldset class="border p-3 mb-4 rounded shadow-sm">
+                [cite_start]<legend class="float-none w-auto px-2 fs-5">Documentos Elaborados [cite: 7]</legend>
+                <div class="row g-3 mb-3">
+                    <div class="col-4"><label for="doc1_tipo" class="form-label">Tipo/Número</label><input type="text" class="form-control" id="doc1_tipo"></div>
+                    <div class="col-4"><label for="doc1_assunto" class="form-label">Assunto</label><input type="text" class="form-control" id="doc1_assunto"></div>
+                    <div class="col-4"><label for="doc1_destino" class="form-label">Destino</label><input type="text" class="form-control" id="doc1_destino"></div>
+                </div>
+                </fieldset>
+
+            <fieldset class="border p-3 mb-4 rounded shadow-sm">
+                [cite_start]<legend class="float-none w-auto px-2 fs-5">Observações [cite: 8]</legend>
+                <div class="mb-3">
+                    <label for="observacoes" class="form-label">Observações do Oficial Superior/Supervisor do CPI-10</label>
+                    <textarea class="form-control" id="observacoes" rows="5"></textarea>
+                </div>
+                </fieldset>
+
+            <div class="d-grid gap-2 mb-5">
+                <button type="button" class="btn btn-danger btn-lg" onclick="gerarRelatorio(event)">
+                    <i class="bi bi-file-earmark-text-fill me-2"></i> GERAR RELATÓRIO
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
